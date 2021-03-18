@@ -9,12 +9,16 @@
 # https://unlicense.org                                         #
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
-import configparser
-import logging as l
+
+
 import functions as f
 
 
-config = configparser.ConfigParser()
-config.read('pyost_autoticket.ini')
-print (f.loglevel(config['pyost_autoticket']['loglevel']))
- 
+
+# lets get things started
+f.l.info('PyOST_AutoTicket Starting.....')
+f.l.debug('Loglevel is: %s (%s).', f.c.ll, f.c.llint)
+f.l.info('Opening SQLite DB: %s', f.c.database)
+db = f.db(f.c.database)
+db.close()
+

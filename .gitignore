@@ -1,6 +1,9 @@
 # Dev config file
 pyost_autoticket.ini
 
+#default SQLite DB
+pyost_autoticket.sqlite3
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
