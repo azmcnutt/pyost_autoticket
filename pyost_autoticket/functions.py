@@ -58,7 +58,34 @@ class db:
         c.execute(''' SELECT count(name) FROM sqlite_master WHERE type='table' AND name='tickets' ''')
         if c.fetchone()[0]!=1:
             l.debug('Create table tickets....')
-
+            table_tickets = """CREATE TABLE "tickets" (
+	                            "id"	INTEGER NOT NULL UNIQUE,
+	                            "frequency"	TEXT NOT NULL DEFAULT 'DAILY',
+	                            "dayofweek"	TEXT,
+	                            "dayofthemonth"	INTEGER,
+	                            "monthoftheyear"	INTEGER,
+	                            "alert"	INTEGER NOT NULL DEFAULT 1,
+	                            "autorespond"	INTEGER NOT NULL DEFAULT 1,
+	                            "source"	TEXT NOT NULL DEFAULT 'API',
+	                            "topicId"	INTEGER NOT NULL,
+	                            "name"	TEXT NOT NULL,
+	                            "email"	TEXT,
+	                            "phone"	TEXT,
+	                            "subject"	TEXT NOT NULL,
+	                            "ip"	TEXT DEFAULT '0.0.0.0',
+	                            "message"	TEXT,
+	                            "lastDate"	TEXT NOT NULL DEFAULT '1970-01-01',
+	                            "nextDate"	TEXT NOT NULL DEFAULT '1970-01-01',
+	                            "enabled"	INTEGER NOT NULL DEFAULT 1,
+	                            PRIMARY KEY("id" AUTOINCREMENT)
+                            )"""
+            try:
+                c = self.conn.cursor()
+                c.execute(table_tickets)
+                l.debug('Table tickets created.')
+            except Error as e:
+                print(e)
+            
         self.conn.commit()
 
 
