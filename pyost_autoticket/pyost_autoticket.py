@@ -9,16 +9,21 @@
 # https://unlicense.org                                         #
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
-
-
 import functions as f
 
 
-
 # lets get things started
-f.l.info('PyOST_AutoTicket Starting.....')
-f.l.debug('Loglevel is: %s (%s).', f.c.ll, f.c.llint)
+f.l.info('-----===== PyOST_AutoTicket Starting =====-----')
+f.l.info('  Database:       %s', f.c.database)
+f.l.info('  JSON API URL:   %s', f.c.ost_tickets_json_url)
+f.l.info('  API Key:        Not shown for security')
+f.l.info('  Log Level:      %s',f.c.ll)
+f.l.info('  Test Mode:      %s',f.c.testmode)
 f.l.info('Opening SQLite DB: %s', f.c.database)
 db = f.db(f.c.database)
+
+
+
+
 db.close()
 

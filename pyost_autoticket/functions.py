@@ -48,6 +48,8 @@ class db:
 
         self.checkSchema()
 
+
+
     def close(self):
         self.conn.close()
         l.info('SQLite connection closed')
